@@ -1,0 +1,20 @@
+{
+    "name": "thomas-squall/string-utils",
+    "description": "Utilities for string management",
+    "version": "0.5.0",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas Cocchiara",
+            "email": "thomas.cocchiara@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "\\": "src"
+        }
+    }
+}
