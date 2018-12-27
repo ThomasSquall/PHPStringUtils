@@ -13,8 +13,6 @@
     "minimum-stability": "stable",
     "require": {},
     "autoload": {
-        "classmap": [
-            "src/"
-        ]
+        "files": ["src/Utils.php"]
     }
 }
