@@ -13,8 +13,8 @@
     "minimum-stability": "stable",
     "require": {},
     "autoload": {
-        "psr-4": {
-            "": "src"
-        }
+        "classmap": [
+            "src/"
+        ]
     }
 }
