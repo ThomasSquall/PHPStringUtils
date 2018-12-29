@@ -2,13 +2,13 @@
 
 ## List of available functions
 
-1) string_starts_with
-2) string_ends_with
-3) string_between
-4) strings_between
-5) string_contains
+1) [string_starts_with](#string_starts_with)
+2) [string_ends_with](#string_ends_with)
+3) [string_between](#string_between)
+4) [strings_between](#strings_between)
+5) [string_contains](#string_contains)
 
-### starts_with
+### string_starts_with
 
 #### Description
 
@@ -39,7 +39,7 @@ Starts with Hello? true
 Starts with World? false
 ```
 
-### ends_with
+### string_ends_with
 
 #### Description
 
