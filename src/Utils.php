@@ -30,25 +30,27 @@ function string_ends_with($haystack, $needle)
  * @param string $string
  * @param string $start
  * @param string $end
- * @param bool $empty_string
  * @return bool|string
  */
-function string_between($string, $start, $end, $empty_string = false)
+function string_between($string, $start, $end)
 {
     $result = false;
 
-    $string = ' ' . $string;
-    $ini = strpos($string, $start);
+    if ($start === $end && substr_count($string, $start) < 2)
+        return $result;
 
-    if ($ini != 0)
+    if (strlen($string) > 1 && string_contains($string, $start) && string_contains($string, $end))
     {
-        $ini += strlen($start);
-        $len = strpos($string, $end, $ini) - $ini;
+        $ini = strpos($string, $start) + strlen($start);
+        $string = substr($string, $ini);
 
-        $s = substr($string, $ini, $len);
+        if (!string_contains($string, $end))
+            return $result;
 
-        if ($s !== "" || $empty_string)
-            $result = $s;
+        $len = strpos($string, $end);
+        $s = substr($string, 0, $len);
+
+        $result = $s;
     }
 
     return $result;
@@ -62,25 +64,26 @@ function string_between($string, $start, $end, $empty_string = false)
  * @param bool $empty_strings
  * @return array
  */
-function strings_between($string, $start, $end, $empty_strings = false)
+function strings_between($string, $start, $end, $empty_strings = true)
 {
     $result = [];
 
-    $ini = strpos($string, $start);
+    if ($start === $end && substr_count($string, $start) < 2)
+        return $result;
 
-    while ($ini !== false && strlen($string) > 1)
+    while (strlen($string) > 1 && string_contains($string, $start) && string_contains($string, $end))
     {
-        $ini += strlen($start);
-        $len = strpos($string, $end, $ini) - $ini;
+        $ini = strpos($string, $start) + strlen($start);
+        $string = substr($string, $ini);
 
-        $s = substr($string, $ini, $len);
+        if (!string_contains($string, $end))
+            return $result;
+
+        $len = strpos($string, $end);
+        $s = substr($string, 0, $len);
 
         if ($s !== "" || $empty_strings)
             $result[] = $s;
-
-        $string = substr($string, $len + $ini, strlen($string) - $len - $ini);
-
-        $ini = strpos($string, $start);
     }
 
     return $result;
